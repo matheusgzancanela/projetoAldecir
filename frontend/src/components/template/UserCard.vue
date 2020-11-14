@@ -57,11 +57,6 @@ export default {
     box-shadow: 2px 2px 0px 0.5px rgba(0,0,0,0.75);
 }
 
-.user-card-image-container {
-    /* padding: 10px; */
-    display: flex;
-}
-
 .user-card-name {
     display: flex;
 }
@@ -73,11 +68,6 @@ export default {
 .user-card-name span {
     margin: auto;
     font-size: 20px;
-}
-
-.user-image-portrait {
-    padding: 10px;
-    margin:  auto;
 }
 
 .user-card-contact-info {
@@ -93,9 +83,19 @@ export default {
 }
 
 .user-image-portrait img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.user-card-image-container {
+    display: flex;
+}
+
+.user-image-portrait {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    padding: 10px;
+    margin:  auto;
 }
 
 </style>

@@ -9,7 +9,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam luctus arcu vel dolor commodo sollicitudin. Aenean mattis ultricies massa nec accumsan. Donec laoreet orci a congue rutrum. Suspendisse eros augue, euismod quis sodales eget, rutrum sed massa. Suspendisse potenti. Nunc id lacus lobortis, efficitur sem id, semper leo. Duis non erat egestas, ornare ex in, dapibus est. Mauris fringilla eros id augue tempus varius. Vestibulum vel congue ex. Integer sit amet mattis orci. Donec euismod leo pulvinar lorem semper, sit amet posuere mauris commodo. Quisque convallis eleifend congue.
                 </p>
 
-            <h1>
+            <h1 v-if="users.length > 0">
                  Nossa equipe de editores
             </h1>
             </div>
@@ -18,7 +18,7 @@
        
         <b-row class="justify-content-md-center">
             
-                <b-col v-bind:key="user" v-for="(user) in users" md="4" sm="12">
+                <b-col v-bind:key="index" v-for="(user, index) in users" md="4" sm="12">
                     <user-card class="user-card" :user="user"></user-card>
                 </b-col>
         </b-row>

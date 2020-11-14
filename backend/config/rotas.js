@@ -40,6 +40,10 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(admin(app.api.article.get))
         .post(admin(app.api.article.save))
+    
+    app.route('/noticias/pagina_inicial')
+        .all(app.config.passport.authenticate())
+        .get(admin(app.api.article.mainPage))
 
     app.route('/noticias/:id')
         .all(app.config.passport.authenticate())

@@ -62,6 +62,18 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const mainPage = async(req, res) => {
+        const page = req.query.page || 1
+        const result = await app.db('articles').count('id').first()
+        const count = parseInt(result.count)
+
+        app.db('articles')
+            .select('id', 'name', 'description', 'imageUrl')
+            .limit(limit).offset(page * limit - limit)
+            .then(articles => res.json({ data: articles, count, limit }))
+            .catch(err => res.status(500).send(err))
+    }
+
     const getById = (req, res) => {
         app.db('articles')
             .where({ id: req.params.id })
@@ -89,5 +101,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, remove, get, getById, getByCategory }
+    return { save, remove, get, getById, getByCategory, mainPage }
 }
