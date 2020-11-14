@@ -3,7 +3,8 @@
         <div class="user-button">
             <span class="d-none d-sm-block">{{ user.name }}</span>
             <div class="user-dropdown-img">
-                <Gravatar :email="user.email" alt="User" />
+                <Gravatar v-if="user.imageUrl === undefined || user.imageUrl === null" :email="user.email" alt="User" />
+                <img v-else :src="user.imageUrl" alt="User" />
             </div>
             <i class="fa fa-angle-down"></i>
         </div>
@@ -20,6 +21,7 @@
 import { userKey } from '@/global'
 import { mapState } from 'vuex'
 import Gravatar from 'vue-gravatar'
+
 
 export default {
     name: 'UserDropdown',

@@ -6,6 +6,8 @@ import AdminPages from '@/components/admin/AdminPages'
 import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
 import Auth from '@/components/auth/Auth'
+import team from '@/components/pages/Team'
+
 
 import { userKey } from '@/global'
 
@@ -15,20 +17,29 @@ const routes = [{
     name: 'home',
     path: '/',
     component: Home
-}, {
+},
+{
+    name: 'team',
+    path: '/equipe',
+    component: team
+},
+{
     name: 'adminPages',
     path: '/admin',
     component: AdminPages,
     meta: { requiresAdmin: true }
-}, {
+},
+{
     name: 'articlesByCategory',
     path: '/categorias/:id/noticias',
     component: ArticlesByCategory
-}, {
+},
+{
     name: 'articleById',
     path: '/noticias/:id',
     component: ArticleById
-}, {
+},
+{
     name: 'auth',
     path: '/auth',
     component: Auth

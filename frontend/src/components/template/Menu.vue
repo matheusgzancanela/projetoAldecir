@@ -7,6 +7,11 @@
         </div>
         <Tree :data="treeData" :options="treeOptions"
             :filter="treeFilter" ref="tree" />
+        <div class="fix_links">
+            <router-link  to="/equipe">
+                Equipe e quem somos nós
+            </router-link>
+        </div>
     </aside>
 </template>
 
@@ -106,4 +111,9 @@ export default {
         font-size: 1.3rem;
         margin-left: 20px;
     }
+
+    .fix_links{
+        margin: 5px 20px 20px 15px;
+    }
+
 </style>

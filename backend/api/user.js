@@ -51,14 +51,24 @@ module.exports = app => {
 
     const get = (req, res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'admin')
+            .select('id', 'name', 'email', 'admin', 'imageUrl')
+            .then(users => res.json(users))
+            .catch(err => res.status(500).send(err))
+    }
+    
+    const getAdmin = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin', 'imageUrl')
+            .where({admin: 1})
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }
 
+
+
     const getById = (req, res) => {
         app.db('users')
-            .select('id', 'name', 'email', 'admin')
+            .select('id', 'name', 'email', 'admin', 'imageUrl')
             .where({ id: req.params.id })
             .first()
             .then(user => res.json(user))
@@ -81,5 +91,5 @@ module.exports = app => {
         }
     }
 
-    return { save, get, getById, remove }
+    return { save, get, getById, remove, getAdmin }
 }
