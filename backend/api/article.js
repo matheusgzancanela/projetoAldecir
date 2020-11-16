@@ -89,13 +89,13 @@ module.exports = app => {
         const categoryId = req.params.id
         const page = req.query.page || 1
         const categories = await app.db.raw(queries.categoryWithChildren, categoryId)
-        const ids = categories.rows.map(c => c.id)
+            //const ids = categories.rows.map(c => c.id)
 
         app.db({ a: 'articles', u: 'users' })
             .select('a.id', 'a.name', 'a.description', 'a.imageUrl', { author: 'u.name' })
             .limit(limit).offset(page * limit - limit)
             .whereRaw('?? = ??', ['u.id', 'a.userId'])
-            .whereIn('categoryId', ids)
+            //.whereIn('categoryId', ids)
             .orderBy('a.id', 'desc')
             .then(articles => res.json(articles))
             .catch(err => res.status(500).send(err))

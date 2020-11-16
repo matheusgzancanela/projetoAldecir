@@ -16,7 +16,7 @@
 <script>
 import PageTitle from '../template/PageTitle'
 import ArticleCard from '../template/ArticleCard.vue'
-import { baseApiUrl, showError } from '@/global'
+import { baseApiUrl } from '@/global'
 import axios from 'axios'
 
 export default {

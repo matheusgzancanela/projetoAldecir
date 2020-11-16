@@ -2,7 +2,7 @@
     <div class="user-card-container">
         <div class="user-card-image-container">
             <div class="user-image-portrait">
-                <img v-if="user.imageUrl !== null && user.imageUrl !== undefined && user.imageUrl !== ''" :src="user.imageUrl" alt="user">
+                <img v-if="user.logo !== null && user.logo !== undefined && user.logo !== ''" :src="user.logo" alt="user">
                 <Gravatar v-else :email="user.email" alt="User" />
             </div>
         </div>
