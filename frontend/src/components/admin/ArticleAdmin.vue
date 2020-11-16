@@ -6,13 +6,13 @@
                 <b-form-input id="article-name" type="text"
                     v-model="article.name" required
                     :readonly="mode === 'remove'"
-                    placeholder="Informe o Nome do Notícia." />
+                    placeholder="Informe o Nome da Notícia." />
             </b-form-group>
             <b-form-group label="Descrição" label-for="article-description">
                 <b-form-input id="article-description" type="text"
                     v-model="article.description" required
                     :readonly="mode === 'remove'"
-                    placeholder="Informe o Nome do Notícia." />
+                    placeholder="Informe o Nome da Notícia." />
             </b-form-group>
             <b-form-group v-if="mode === 'save'"
                 label="Imagem (URL):" label-for="article-imageUrl">
@@ -34,7 +34,7 @@
             <b-form-group v-if="mode === 'save'"
                 label="Conteúdo" label-for="article-content">
                 <VueEditor v-model="article.content"
-                    placeholder="Informe o Conteúdo do Notícia." />
+                    placeholder="Informe o Conteúdo da Notícia." />
             </b-form-group>
             <b-button variant="primary" v-if="mode === 'save'"
                 @click="save">Salvar</b-button>

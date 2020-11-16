@@ -4,8 +4,8 @@
             <PageTitle icon="fa fa-globe" main="Bem-Vindo!"
                 sub="Site de Notícias" />
         </div>
-            <b-row class="justify-content-md-center">
-            
+            <b-row >
+            <!-- class="justify-content-md-center" -->
                 <b-col v-bind:key="index" v-for="(article, index) in articles" md="6" sm="12">
                     <article-card class="artile-card" :article="article"></article-card>
                 </b-col>
