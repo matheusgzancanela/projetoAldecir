@@ -1,15 +1,10 @@
+
 <template>
     <div class="article-card-container">
         <div class="article-card-image-container">
-            <div class="article-image-portrait" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
-                <span class="article-title">
-                    {{article.name}}
-                </span>
-                <div  class="text-content">
-                        lore
-                </div>
+            <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
+                <div class="after">This is some content</div>
             </div>
-            <div v-if="show" class="filter"></div>
         </div>
     </div>
 </template>
@@ -43,6 +38,10 @@ export default {
     z-index: 0;
 }
 
+.article-card-image-container {
+    height: 100%;
+    width: 100%;
+}
 
 .article-title {
     padding: 25px;
@@ -57,31 +56,31 @@ export default {
     width: 100%;
     height: 100%;
     margin: 5px;
-    height: 350px;
+    height: 250px;
 }
 
-.article-card-image-container {
-    /* padding: 10px; */
-    display: flex;
-    width: 100%;
-    height: 100%;
+.image-container {
     position: relative;
-}
-
-.article-card-contact {
-    padding: 10px;
-    padding-top: 55px;
-    display: flex;
-    width: 100%;
-}
-
-.article-image-portrait {
     width: 100%;
     height: 100%;
-    background-repeat: no-repeat;
-    background-position: initial;
     background-size: cover;
-    
+    background-position: initial;
+}
+
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+}
+
+.image-container:hover .after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
 }
 
 </style>
+

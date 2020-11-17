@@ -23,17 +23,17 @@
                     <b-form-group
                         label="Imagem (URL):" label-for="user-imageUrl">
                         <b-form-input id="user-imageUrl" type="text"
-                            v-model="user.imageUrl" required
+                            v-model="user.logo" required
                             :readonly="mode === 'remove'"
                             placeholder="Informe a URL da Imagem..." />
                     </b-form-group>
                 </b-col>
             </b-row>
-            <b-form-checkbox id="user-admin" v-show="mode === 'save'"
+            <b-form-checkbox id="user-admin" :v-show="mode === 'save'"
                 v-model="user.admin" class="mt-3 mb-3">
                 Administrador?
             </b-form-checkbox>
-            <b-row v-show="mode === 'save'">
+            <b-row :v-show="mode === 'save'">
                 <b-col md="6" sm="12">
                     <b-form-group label="Senha:" label-for="user-password">
                         <b-form-input id="user-password" type="password"
