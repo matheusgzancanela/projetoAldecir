@@ -12,7 +12,7 @@ module.exports = app => {
 
     app.route('/usuariosAdmin')
         .all(app.config.passport.authenticate())
-        .get(admin(app.api.user.getAdmin))
+        .get(app.api.user.getAdmin)
 
     app.route('/usuarios/:id')
         .all(app.config.passport.authenticate())
@@ -42,7 +42,7 @@ module.exports = app => {
 
     app.route('/noticias/pagina_inicial')
         .all(app.config.passport.authenticate())
-        .get(admin(app.api.article.mainPage))
+        .get(app.api.article.mainPage)
 
     app.route('/noticias/:id')
         .all(app.config.passport.authenticate())

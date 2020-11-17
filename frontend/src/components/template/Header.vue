@@ -1,10 +1,8 @@
 <template>
-
     <header class="header">
-        <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
+        <b-button class="toggle" @click="toggleMenu" v-if="!hideToggle">
             <i class="fa fa-lg" :class="icon"></i>
-            <a>Menu</a>
-        </a>
+        </b-button>
         <h1 class="title">
             <router-link to="/"><img src="@/assets/logo.png" height="30" width="30" >{{ title }}</router-link>
         </h1>
@@ -67,22 +65,5 @@ export default {
     .title a:hover {
         color: #FFF;
         text-decoration: none;
-    }
-
-    header.header > a.toggle {
-        width: 60px;
-        height: 100%;
-        color: #fff;
-        justify-self: flex-start;
-        text-decoration: none;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header.header > a.toggle:hover {
-        color: #fff;
-        background-color: rgba(0, 0, 0, 0.2);
     }
 </style>
