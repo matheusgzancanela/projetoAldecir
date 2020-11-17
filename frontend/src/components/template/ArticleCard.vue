@@ -3,7 +3,9 @@
     <div class="article-card-container">
         <div class="article-card-image-container">
             <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
-                <div class="after">This is some content</div>
+                <div class="after">
+                    <span></span>
+                </div>
             </div>
         </div>
     </div>
