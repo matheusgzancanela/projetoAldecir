@@ -21,6 +21,7 @@ export default {
         }
     },
     mounted() {
+        console.log('errou');
         const url = `${baseApiUrl}/noticias/${this.$route.params.id}`
         axios.get(url).then(res => this.article = res.data)
     },
