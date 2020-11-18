@@ -4,7 +4,7 @@ module.exports = app => {
     const { existsOrError } = app.api.validation
 
     const save = (req, res) => {
-        const article = { ...req.body }
+        const article = {...req.body }
         if (req.params.id) article.id = req.params.id
 
         try {
@@ -51,7 +51,6 @@ module.exports = app => {
     const limit = 10 // usado para paginação
     const get = async(req, res) => {
         const page = req.query.page || 1
-
         const result = await app.db('articles').count('id').first()
         const count = parseInt(result.count)
 
@@ -100,7 +99,7 @@ module.exports = app => {
         and     length(@pv := concat(@pv, ',', id))
         `);
 
-        
+
         const ids = categories[0].map(c => c.id)
 
         ids.push(categoryId);

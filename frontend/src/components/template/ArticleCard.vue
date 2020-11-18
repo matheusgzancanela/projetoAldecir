@@ -2,11 +2,15 @@
 <template>
     <div class="article-card-container">
         <div class="article-card-image-container">
-            <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
-                <div class="after">
-                    <span></span>
+            <router-link :to="{ name: 'articleById', params: { id: article.id }}">
+                <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
+                    <h1>{{ article.name }}</h1>
+                    <p>{{ article.description }}</p>
+                    <div class="after">
+                        <span></span>
+                    </div>
                 </div>
-            </div>
+            </router-link>
         </div>
     </div>
 </template>
