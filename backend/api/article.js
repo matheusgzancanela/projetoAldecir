@@ -68,6 +68,7 @@ module.exports = app => {
 
         app.db('articles')
             .select('id', 'name', 'description', 'imageUrl')
+            .orderBy('id', 'desc')
             .limit(limit).offset(page * limit - limit)
             .then(articles => res.json({ data: articles, count, limit }))
             .catch(err => res.status(500).send(err))

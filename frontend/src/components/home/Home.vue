@@ -1,8 +1,8 @@
 <template>
     <div class="home">
         <div class="head">
-            <PageTitle icon="fa fa-globe" main="Bem-Vindo!"
-                sub="Site de Notícias" />
+            <PageTitle icon="fa fa-globe" main="Notícias"
+                sub="últimas noticias registradas" />
         </div>
             <b-row >
             <!-- class="justify-content-md-center" -->

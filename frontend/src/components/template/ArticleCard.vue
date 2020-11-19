@@ -1,13 +1,13 @@
-
 <template>
     <div class="article-card-container">
         <div class="article-card-image-container">
             <router-link :to="{ name: 'articleById', params: { id: article.id }}">
-                <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
-                    <h1>{{ article.name }}</h1>
-                    <p>{{ article.description }}</p>
+                <div class="image-container" :style="{backgroundImage: article.imageUrl}">
+                    <div class="article-title">
+                        <h1>{{ article.name }}</h1>
+                    </div>
                     <div class="after">
-                        <span></span>
+                        <h1>{{ article.description }}</h1>
                     </div>
                 </div>
             </router-link>
@@ -16,10 +16,6 @@
 </template>
 
 <script>
-import { baseApiUrl, showError } from '@/global'
-import Gravatar from 'vue-gravatar'
-import axios from 'axios'
-
 export default {
     name: 'ArticleCard',
     components: { },
@@ -33,9 +29,7 @@ export default {
 
 </script>
 
-
 <style>
-
 .filter {
     position: absolute;
     width: 100%;
@@ -47,6 +41,8 @@ export default {
 .article-card-image-container {
     height: 100%;
     width: 100%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .article-title {
@@ -58,7 +54,7 @@ export default {
 }
 
 .article-card-container{
-    /* padding: 5px; */
+    padding: 5px;
     width: 100%;
     height: 100%;
     margin: 5px;
@@ -80,13 +76,11 @@ export default {
     width: 100%;
     height: 100%;
     display: none;
-    color: #FFF;
+    color: white;
 }
 
 .image-container:hover .after {
     display: block;
-    background: rgba(0, 0, 0, .6);
+    background: rgba(0, 0, 0, 0.7);
 }
-
 </style>
-
