@@ -1,8 +1,9 @@
+
 <template>
     <div class="article-card-container">
         <div class="article-card-image-container">
             <router-link :to="{ name: 'articleById', params: { id: article.id }}">
-                <div class="image-container" :style="{backgroundImage: article.imageUrl}">
+                <div class="image-container" :style="{backgroundImage: 'url('+ article.imageUrl +')'}">
                     <div class="article-title">
                         <h1>{{ article.name }}</h1>
                     </div>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'ArticleCard',
     components: { },
@@ -29,7 +31,9 @@ export default {
 
 </script>
 
+
 <style>
+
 .filter {
     position: absolute;
     width: 100%;
@@ -83,4 +87,6 @@ export default {
     display: block;
     background: rgba(0, 0, 0, 0.7);
 }
+
 </style>
+
