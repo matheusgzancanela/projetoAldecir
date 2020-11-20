@@ -19,7 +19,7 @@
                             placeholder="Informe o E-mail do Usuário..." />
                     </b-form-group>
                 </b-col>
-                <b-col  md="6" sm="12">
+                <b-col v-if="mode === 'save'"  md="6" sm="12">
                     <b-form-group
                         label="Imagem (URL):" label-for="user-imageUrl">
                         <b-form-input id="user-imageUrl" type="text"
@@ -29,11 +29,11 @@
                     </b-form-group>
                 </b-col>
             </b-row>
-            <b-form-checkbox id="user-admin" :v-show="mode === 'save'"
+            <b-form-checkbox id="user-admin" v-if="mode === 'save'"
                 v-model="user.admin" class="mt-3 mb-3">
                 Administrador?
             </b-form-checkbox>
-            <b-row :v-show="mode === 'save'">
+            <b-row v-if="mode === 'save'">
                 <b-col md="6" sm="12">
                     <b-form-group label="Senha:" label-for="user-password">
                         <b-form-input id="user-password" type="password"
