@@ -61,7 +61,7 @@
             </b-row>
         </b-form>
         <hr>
-        <b-table hover striped :items="users" :fields="fields">
+        <b-table hover striped id="table" :items="users" :fields="fields" :per-page="perPage" :current-page="currentPage" >
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
@@ -71,6 +71,7 @@
                 </b-button>
             </template>
         </b-table>
+        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-constrols="table" ></b-pagination>
     </div>
 </template>
 
@@ -85,6 +86,8 @@ export default {
             mode: 'save',
             user: {},
             users: [],
+            perPage: 5,
+            currentPage: 1,
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
@@ -93,6 +96,11 @@ export default {
                     formatter: value => value ? 'Sim' : 'Não' },
                 { key: 'actions', label: 'Ações' }
             ]
+        }
+    },
+    computed: {
+        rows() {
+            return this.users.length
         }
     },
     methods: {

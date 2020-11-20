@@ -43,7 +43,7 @@
             <b-button class="ml-2" @click="reset">Cancelar</b-button>
         </b-form>
         <hr>
-        <b-table hover striped :items="articles" :fields="fields">
+        <b-table hover striped id="table" :items="articles" :fields="fields" :per-page="perPage" :current-page="currentPage" >
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadArticle(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
@@ -53,7 +53,7 @@
                 </b-button>
             </template>
         </b-table>
-        <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
+        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-constrols="table" ></b-pagination>
     </div>
 </template>
 
@@ -72,15 +72,19 @@ export default {
             articles: [],
             categories: [],
             users: [],
-            page: 1,
-            limit: 0,
-            count: 0,
+            perPage: 5,
+            currentPage: 1,
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
                 { key: 'description', label: 'Descrição', sortable: true },
                 { key: 'actions', label: 'Ações' }
             ]
+        }
+    },
+    computed: {
+        rows() {
+            return this.articles.length
         }
     },
     methods: {

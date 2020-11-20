@@ -24,7 +24,7 @@
             <b-button class="ml-2" @click="reset">Cancelar</b-button>
         </b-form>
         <hr>
-        <b-table hover striped :items="categories" :fields="fields">
+        <b-table hover striped id="table" :items="categories" :fields="fields" :per-page="perPage" :current-page="currentPage" >
             <template slot="actions" slot-scope="data">
                 <b-button variant="warning" @click="loadCategory(data.item)" class="mr-2">
                     <i class="fa fa-pencil"></i>
@@ -34,6 +34,7 @@
                 </b-button>
             </template>
         </b-table>
+        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-constrols="table" ></b-pagination>
     </div>
 </template>
 
@@ -47,6 +48,8 @@ export default {
         return {
             mode: 'save',
             category: {},
+            perPage: 5,
+            currentPage: 1,
             categories: [],
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
@@ -56,11 +59,16 @@ export default {
             ]
         }
     },
+    computed: {
+        rows() {
+            return this.categories.length
+        }
+    },
     methods: {
         loadCategories() {
             const url = `${baseApiUrl}/categorias`
             axios.get(url).then(res => {
-                // this.categories = res.data
+                this.categories = res.data
                 this.categories = res.data.map(category => {
                     return { ...category, value: category.id, text: category.path }
                 })
