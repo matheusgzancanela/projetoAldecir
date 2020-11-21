@@ -80,9 +80,7 @@ body {
 }
 .news .article {
   overflow: hidden;
-  width: 600px;
-  height: 300px;
-  margin: 50px;
+  margin: 20px;
 }
 .news .article img {
   width: 100%;
