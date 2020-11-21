@@ -53,4 +53,8 @@ module.exports = app => {
     app.route('/categorias/:id/noticias')
         .all(app.config.passport.authenticate())
         .get(app.api.article.getByCategory)
+
+    app.route('/enviar-email')
+        .all(app.config.passport.authenticate())
+        .post(app.api.email.send)
 }
