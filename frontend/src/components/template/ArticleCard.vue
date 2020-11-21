@@ -6,8 +6,10 @@
                 <img v-if="article.imageUrl" :src="article.imageUrl" />
                 <img v-else src="@/assets/noticia.png" />
                 <figcaption>
+                  <div>
                     <h3>{{ article.name }}</h3>
                     <p>{{ article.description }}</p>
+                  </div>
                 </figcaption>
             </figure>
         </router-link>
@@ -37,7 +39,6 @@ export default {
   position: relative;
   box-shadow: inset 0 0 1em black, 0 0 1em black;
   border: rgba(0,0,0,0.2);
-  border-radius: 10px;
 }
 .fix {
   position: fixed;
@@ -80,9 +81,8 @@ body {
 }
 .news .article {
   overflow: hidden;
-  width: 600px;
-  height: 300px;
-  margin: 50px;
+  width: 100%;
+  height: 250px;
 }
 .news .article img {
   width: 100%;
@@ -97,7 +97,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 40px;
+  padding: 25px;
   box-shadow: 0 0 2px rgba(0,0,0,0.2);
   background: rgba(6,18,53,0.6);
   opacity: 0;
@@ -110,6 +110,18 @@ body {
   margin-bottom: 0;
   font-weight: bold;
 }
+
+.news .article figcaption div {
+    max-height: 100%;
+    display: block;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.news .article figcaption p {
+  word-wrap: break-word;
+}
+
 .news .article:hover img,
 .news .article:focus img,
 .news .article:active img {

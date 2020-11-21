@@ -4,10 +4,13 @@
             <PageTitle icon="fa fa-globe" main="Notícias"
                 sub="últimas noticias registradas" />
         </div>
-            <b-row >
+        <b-row>
             <!-- class="justify-content-md-center" -->
                 <b-col v-bind:key="index" v-for="(article, index) in articles" md="6" sm="12">
-                    <article-card class="artile-card" :article="article"></article-card>
+                    <article-card v-if="index < 2" class="artile-card" :article="article"></article-card>
+                </b-col>
+                <b-col v-bind:key="index + 100" v-for="(article, index) in articles" md="4" sm="12">
+                    <article-card v-if="index > 2" class="artile-card" :article="article"></article-card>
                 </b-col>
         </b-row>
     </div>
