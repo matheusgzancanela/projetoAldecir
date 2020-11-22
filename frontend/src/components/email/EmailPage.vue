@@ -3,31 +3,30 @@
     <b-form>
       <b-form-group
         id="input-group-1"
-        label="Email address:"
+        label="E-mail:"
         label-for="input-1"
-        description="We'll never share your email with anyone else."
       >
         <b-form-input
           id="input-1"
           v-model="form.email"
           type="email"
           required
-          placeholder="Enter email"
+          placeholder="Digite seu e-mail"
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your subject:" label-for="input-2">
+      <b-form-group id="input-group-2" label="Assunto:" label-for="input-2">
         <b-form-input
           id="input-2"
           v-model="form.subject"
           required
-          placeholder="Enter subject"
+          placeholder="Digite aqui o assunto"
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-3" label="Your Text:" label-for="input-3">
+      <b-form-group id="input-group-3" label-for="input-3">
         <VueEditor v-model="form.text" required
-                    placeholder="Informe o Conteúdo do seu email." />
+                    placeholder="Informe o conteúdo do seu email." />
       </b-form-group>
 
       <b-button variant="primary"
@@ -64,9 +63,10 @@ import axios from 'axios'
                     this.reset()
                 })
                 .catch(showError)
+                this.reset()
      },
      reset() {
-
+       this.form = {}
      }
     }
   }

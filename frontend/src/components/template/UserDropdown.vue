@@ -9,7 +9,7 @@
         </div>
         <div class="user-dropdown-content">
             <router-link to="/enviar-email">
-                Contate-nos
+                <i class="fa fa-envelope-square"></i> Contate-nos
             </router-link>
             <router-link to="/admin" v-if="user.admin">
                 <i class="fa fa-cogs"></i> Administração
