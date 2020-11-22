@@ -1,7 +1,11 @@
 <template>
     <div class="article-by-id">
-        <PageTitle icon="fa fa-file-o" :main="article.name" :sub="article.description" />
+        <PageTitle :main="article.name" :sub="article.description" />
         <div class="article-content" v-html="article.content"></div>
+        <div class="comments">
+            <h3>Comentários</h3>
+            <Comments v-bind:article="article"></Comments>
+        </div>
     </div>
 </template>
 
@@ -11,17 +15,17 @@ import hljs from 'highlightjs/highlight.pack.js'
 import { baseApiUrl } from '@/global'
 import axios from 'axios'
 import PageTitle from '../template/PageTitle'
+import Comments from '../template/Comments'
 
 export default {
     name: 'ArticleById',
-    components: { PageTitle },
+    components: { PageTitle, Comments },
     data: function() {
         return {
             article: {}
         }
     },
     mounted() {
-        console.log('errou');
         const url = `${baseApiUrl}/noticias/${this.$route.params.id}`
         axios.get(url).then(res => this.article = res.data)
     },
@@ -34,9 +38,14 @@ export default {
 </script>
 
 <style>
+    .comments {
+        margin-top: 20px;
+    }
+    .comments h3 {
+        margin-bottom: 20px;
+    }
     .article-content {
         background-color: #FFF;
-        border-radius: 8px;
         padding: 25px;
     }
 

@@ -53,4 +53,12 @@ module.exports = app => {
     app.route('/categorias/:id/noticias')
         .all(app.config.passport.authenticate())
         .get(app.api.article.getByCategory)
+
+    app.route('/comentarios/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.article.getComments)
+
+    app.route('/comentar')
+        .all(app.config.passport.authenticate())
+        .post(app.api.article.writeComment)
 }

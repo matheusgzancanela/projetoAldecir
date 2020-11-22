@@ -65,7 +65,7 @@ module.exports = app => {
 
         app.db('articles')
             .select('id', 'name', 'description', 'imageUrl')
-            .limit(limit)
+            .limit(9)
             .orderBy('id', 'desc')
             .then(articles => res.json({ data: articles, count, limit }))
             .catch(err => res.status(500).send(err))
@@ -79,6 +79,34 @@ module.exports = app => {
                 article.content = article.content.toString()
                 return res.json(article)
             })
+            .catch(err => res.status(500).send(err))
+    }
+
+    const getComments = async(req, res) => {
+        app.db('comments')
+        .select('comments.content', 'users.name', 'users.logo')
+        .join('users', 'users.id', '=', 'comments.userId')
+        .where({ 'comments.articleId': req.params.id })
+        .orderBy('comments.id', 'desc')
+        .then(comments => {
+            return res.json(comments)
+        })
+        .catch(err => res.status(500).send(err))
+    }
+
+    const writeComment = async(req, res) => {
+        const comment = {...req.body }
+        if (req.params.id) article.id = req.params.id
+        try {
+            existsOrError(comment.userId, 'Usuario não informado')
+            existsOrError(comment.content, 'Comentario não informado')
+            existsOrError(comment.articleId, 'Artigo não informado')
+        } catch (msg) {
+            res.status(400).send(msg)
+        }
+        app.db('comments')
+            .insert(comment)
+            .then(_ => res.status(204).send())
             .catch(err => res.status(500).send(err))
     }
 
@@ -111,5 +139,5 @@ module.exports = app => {
     }
 
 
-    return { save, remove, get, getById, getByCategory, mainPage }
+    return { save, remove, get, getById, getByCategory, mainPage, getComments, writeComment }
 }
