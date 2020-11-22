@@ -7,10 +7,7 @@
                 </h1>
                 <p>
                     O planeta notícias é uma redação independente composta de editores de variadas ideias
-                    e ideologias pronta para trazer diariamente desde os furos, até as fofocas mais quentes,
-                    nosso lema é que se dá pra aumentar um pouco a história, concerteza será aumentado, 
-                    pois assim fica mais legal de ler. nossa equipe está comprometida em chegar o mais proximo possivel de
-                    uma fake news mas sem cruzar a linha da mentira.                  
+                    e ideologias pronta para trazer diariamente desde os furos, até as fofocas mais quentes do momento.                  
                 </p>
 
             <h3 v-if="users.length > 0">
