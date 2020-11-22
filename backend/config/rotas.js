@@ -61,4 +61,7 @@ module.exports = app => {
     app.route('/comentar')
         .all(app.config.passport.authenticate())
         .post(app.api.article.writeComment)
+    app.route('/enviar-email')
+        .all(app.config.passport.authenticate())
+        .post(app.api.email.send)
 }
