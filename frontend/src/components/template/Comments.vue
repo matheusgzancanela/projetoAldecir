@@ -5,7 +5,8 @@
             <b-row>
                 <b-col style="display:flex; margin: 5px" md="10" sm="12">
                     <div class="user-logo">
-                        <img :src="user.logo" alt="">
+                        <img v-if="user.logo !== null && user.logo !== undefined && user.logo !== ''" :src="user.logo" alt="">
+                        <Gravatar v-else :email="user.email" alt="User" />
                     </div>
                     <span style="margin:auto 10px auto 10px">
                         <b>
@@ -27,7 +28,8 @@
         <b-row :key="index" v-for="(comment, index) in comments">
             <b-col  style="display:flex; margin: 5px" md="10" sm="12">
                 <div class="user-logo">
-                    <img :src="comment.logo" alt="">
+                    <img v-if="comment.logo !== null && comment.logo !== undefined && comment.logo !== ''" :src="comment.logo" alt="">
+                    <Gravatar v-else :email="comment.email" alt="User" />
                 </div>
                 <span style="margin:auto 10px auto 10px">
                     <b>
@@ -45,11 +47,12 @@
 
 <script>
     import { baseApiUrl, userKey } from '@/global'
+    import Gravatar from 'vue-gravatar'
     import axios from 'axios'
 
     export default {
         name: 'Comments',
-        components: { },
+        components: { Gravatar },
         props: ['article'],
         data() {
             return {
