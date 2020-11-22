@@ -22,7 +22,7 @@
         <hr>
         <b-table hover striped id="table" :items="comments" :fields="fields" :per-page="perPage" :current-page="currentPage" >
             <template slot="actions" slot-scope="data">
-                <b-button variant="danger" @click="loadUser(data.item, 'remove')">
+                <b-button variant="danger" @click="loadComment(data.item, 'remove')">
                     <i class="fa fa-trash"></i>
                 </b-button>
             </template>
@@ -59,26 +59,16 @@ export default {
         }
     },
     methods: {
-        loadUsers() {
+        loadComments() {
             const url = `${baseApiUrl}/comentarios`
             axios.get(url).then(res => {
                 this.comments = res.data
             })
         },
         reset() {
-            this.mode = 'save'
+            this.mode = ''
             this.comment = {}
-            this.loadUsers()
-        },
-        save() {
-            const method = this.comment.id ? 'put' : 'post'
-            const id = this.comment.id ? `/${this.comment.id}` : ''
-            axios[method](`${baseApiUrl}/comentarios${id}`, this.comment)
-                .then(() => {
-                    this.$toasted.global.defaultSuccess()
-                    this.reset()
-                })
-                .catch(showError)
+            this.loadComments()
         },
         remove() {
             const id = this.comment.id
@@ -89,13 +79,13 @@ export default {
                 })
                 .catch(showError)
         },
-        loadUser(comment, mode = 'save') {
+        loadComment(comment, mode = '') {
             this.mode = mode
             this.comment = { ...comment }
         }
     },
     mounted() {
-        this.loadUsers()
+        this.loadComments()
     }
 }
 </script>
