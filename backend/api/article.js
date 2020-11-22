@@ -82,16 +82,35 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getAllComments = (req, res) => {
+        app.db('comments')
+            .select('id', 'content', 'articleId', 'userId')
+            .then(users => res.json(users))
+            .catch(err => res.status(500).send(err))
+    }
+
+    const removeComment = async(req, res) => {
+        try {
+            const rowsDeleted = await app.db('comments')
+                .where({ id: req.params.id }).del()
+            existsOrError(rowsDeleted, 'Comentario não foi encontrado.')
+
+            res.status(204).send()
+        } catch (msg) {
+            res.status(400).send(msg)
+        }
+    }
+
     const getComments = async(req, res) => {
         app.db('comments')
-        .select('comments.content', 'users.name', 'users.logo')
-        .join('users', 'users.id', '=', 'comments.userId')
-        .where({ 'comments.articleId': req.params.id })
-        .orderBy('comments.id', 'desc')
-        .then(comments => {
-            return res.json(comments)
-        })
-        .catch(err => res.status(500).send(err))
+            .select('comments.content', 'users.name', 'users.logo')
+            .join('users', 'users.id', '=', 'comments.userId')
+            .where({ 'comments.articleId': req.params.id })
+            .orderBy('comments.id', 'desc')
+            .then(comments => {
+                return res.json(comments)
+            })
+            .catch(err => res.status(500).send(err))
     }
 
     const writeComment = async(req, res) => {
@@ -139,5 +158,5 @@ module.exports = app => {
     }
 
 
-    return { save, remove, get, getById, getByCategory, mainPage, getComments, writeComment }
+    return { save, remove, get, getById, getByCategory, mainPage, getAllComments, getComments, writeComment, removeComment }
 }
