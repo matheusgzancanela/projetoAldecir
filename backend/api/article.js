@@ -84,7 +84,9 @@ module.exports = app => {
 
     const getAllComments = (req, res) => {
         app.db('comments')
-            .select('id', 'content', 'articleId', 'userId')
+            .select('comments.id','comments.content', 'users.name as user', 'articles.name as article')
+            .join('users', 'users.id', '=', 'comments.userId')
+            .join('articles', 'articles.id', '=', 'comments.articleId')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }

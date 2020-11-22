@@ -47,8 +47,8 @@ export default {
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'content', label: 'Conteudo', sortable: true },
-                { key: 'articleId', label: 'ID Do artigo', sortable: true },
-                { key: 'userId', label: 'ID do usuario', sortable: true },
+                { key: 'article', label: 'Artigo', sortable: true },
+                { key: 'user', label: 'Usuario', sortable: true },
                 { key: 'actions', label: 'Ações' }
             ]
         }
