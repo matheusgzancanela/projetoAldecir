@@ -4,7 +4,7 @@
             <i class="fa fa-lg" :class="icon"></i>
         </b-button>
         <h1 class="title">
-            <router-link to="/"><img src="@/assets/logo.png" height="30" width="30" >{{ title }}</router-link>
+            <router-link to="/"><i class="fa fa-globe"></i> {{ title }}</router-link>
         </h1>
         <UserDropdown v-if="!hideUserDropdown" />
     </header>

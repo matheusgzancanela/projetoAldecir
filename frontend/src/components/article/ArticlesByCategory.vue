@@ -14,7 +14,6 @@
         </div>
     </div>
 </template>
-
 <script>
 import { baseApiUrl } from '@/global'
 import axios from 'axios'
@@ -40,12 +39,21 @@ export default {
         getArticles() {
             const url = `${baseApiUrl}/categorias/${this.category.id}/noticias?page=${this.page}`
             axios(url).then(res => {
-                this.articles = this.articles.concat(res.data)
-                this.page++
-
+                res.data.map((item) => {
+                    let has = false;
+                    this.articles.map(article => {
+                        if (article.id === item.id) {
+                            has = true;
+                        }
+                    });
+                    if (!has) {
+                        this.articles.push(item);
+                    }
+                });
                 if(res.data.length === 0) this.loadMore = false
             })
-        }
+        },
+
     },
     watch: {
         $route(to) {

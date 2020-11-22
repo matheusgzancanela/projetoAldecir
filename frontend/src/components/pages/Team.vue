@@ -3,15 +3,19 @@
         <b-row class="justify-content-md-center">
             <div class="info">
                 <h1>
-                    Lorem ipsum dolor sit amet,
+                    Bem vindo ao portal planeta notícias
                 </h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam luctus arcu vel dolor commodo sollicitudin. Aenean mattis ultricies massa nec accumsan. Donec laoreet orci a congue rutrum. Suspendisse eros augue, euismod quis sodales eget, rutrum sed massa. Suspendisse potenti. Nunc id lacus lobortis, efficitur sem id, semper leo. Duis non erat egestas, ornare ex in, dapibus est. Mauris fringilla eros id augue tempus varius. Vestibulum vel congue ex. Integer sit amet mattis orci. Donec euismod leo pulvinar lorem semper, sit amet posuere mauris commodo. Quisque convallis eleifend congue.
+                    O planeta notícias é uma redação independente composta de editores de variadas ideias
+                    e ideologias pronta para trazer diariamente desde os furos, até as fofocas mais quentes,
+                    nosso lema é que se dá pra aumentar um pouco a história, concerteza será aumentado, 
+                    pois assim fica mais legal de ler. nossa equipe está comprometida em chegar o mais proximo possivel de
+                    uma fake news mas sem cruzar a linha da mentira.                  
                 </p>
 
-            <h1 v-if="users.length > 0">
+            <h3 v-if="users.length > 0">
                  Nossa equipe de editores
-            </h1>
+            </h3>
             </div>
         </b-row>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="head">
-            <PageTitle icon="fa fa-globe" main="Notícias"
+            <PageTitle main="Planeta Notícias"
                 sub="últimas noticias registradas" />
         </div>
         <b-row>

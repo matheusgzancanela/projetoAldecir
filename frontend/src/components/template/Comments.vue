@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import { baseApiUrl, userKey } from '@/global'
+    import { baseApiUrl, showError } from '@/global'
     import Gravatar from 'vue-gravatar'
     import axios from 'axios'
 
@@ -64,7 +64,6 @@
         mounted() {
             setTimeout(()=>{
                 const url = `${baseApiUrl}/comentarios/` + this.article.id;
-                console.log(url);
                 axios.get(url).then(res => {this.comments = res.data})
                 this.user = JSON.parse(localStorage.getItem('__knowledge_user'));
             },100);
