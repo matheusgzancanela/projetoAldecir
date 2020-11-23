@@ -6,11 +6,8 @@
         </div>
         <b-row>
             <!-- class="justify-content-md-center" -->
-                <b-col v-bind:key="index" v-for="(article, index) in articles" md="6" sm="12">
-                    <article-card v-if="index < 2" class="artile-card" :article="article"></article-card>
-                </b-col>
-                <b-col v-bind:key="index + 100" v-for="(article, index) in articles" md="4" sm="12">
-                    <article-card v-if="index > 2" class="artile-card" :article="article"></article-card>
+                <b-col v-bind:key="index" v-for="(article, index) in articles" :md="index < 2 ? 6 : 4" sm="12">
+                    <article-card  class="artile-card" :article="article"></article-card>
                 </b-col>
         </b-row>
     </div>
