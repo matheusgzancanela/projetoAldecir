@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <span>© Copyright <strong>Henrique</strong> e <strong>Matheus</strong></span>
+        <!-- <span>© Copyright <strong>Henrique</strong> e <strong>Matheus</strong></span> -->
     </footer>
 </template>
 

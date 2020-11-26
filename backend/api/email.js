@@ -24,7 +24,8 @@ module.exports = app => {
 
             transporter.sendMail({
                 from: email.email,
-                to: "522cc64514-640040@inbox.mailtrap.io",
+                to: "unnamedv30@gmail.com",
+                // to: "522cc64514-640040@inbox.mailtrap.io",
                 subject: email.subject,
                 text: email.text
             })
